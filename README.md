@@ -6,7 +6,7 @@ Books of different heights, a pile of receipts, and numbered pickup tickets can 
 
 ![Three sorting methods illustrated as neighbor swaps, split and merge, and partitioning around a pivot](assets/cover.svg)
 
-This first chapter covers **only three sorting algorithms**. Start with the story, follow the picture, then run the Go code. No mathematics is needed to begin.
+This first chapter covers **only three sorting algorithms**. Start with the story and picture, then work through the classroom-style calculations and run the Go code. You can understand the idea before reading the equations.
 
 ## Sorting in one minute
 
@@ -34,6 +34,18 @@ flowchart LR
   M --> S
   Q --> S
 ```
+
+## Work through it like a classroom problem
+
+All three guides use the same input. Number the positions from **0**, as Go does:
+
+| Position `i` | 0 | 1 | 2 | 3 | 4 | 5 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Value `A[i]` | 5 | 1 | 4 | 2 | 8 | 3 |
+
+Read each guide in four ways: **picture** (what moves), **trace** (the row after each step), **pseudocode and Go** (how to repeat it), and **math** (why it works and how much work it does). Pause before each row and predict the next result. For example, Bubble Sort first compares `A[0] = 5` with `A[1] = 1`; because `5 > 1`, it swaps them and the row becomes `[1, 5, 4, 2, 8, 3]`.
+
+In the calculations, `n` is the number of values, `A[i]` is the value at position `i`, and `T(n)` means the work needed to sort `n` values. The final answer is always `[1, 2, 3, 4, 5, 8]`; the steps and costs differ.
 
 ## Which one should I choose?
 
@@ -72,7 +84,9 @@ Each function changes the slice you pass to it. The example copies the starting 
 
 - **Pass:** one trip through the values being examined.
 - **Pivot:** the reference value used to split a Quick Sort section.
-- **O(n):** work grows roughly with the number of items. **O(n²):** roughly with its square. **O(n log n):** grows faster than O(n), but much slower than O(n²) for large lists. These describe growth, not exact seconds.
+- **Comparison:** checking which of two values should come first. **Swap:** exchanging their positions.
+- **`log₂ n`:** roughly how many times `n` can be halved before reaching 1. For example, `8 → 4 → 2 → 1` takes three halvings, so `log₂ 8 = 3`.
+- **`O(f(n))`:** an upper bound on how work grows as `n` grows, ignoring constant factors. `Θ(f(n))` means a matching upper and lower growth bound. The guides derive `O(n)`, `O(n²)`, and `O(n log n)`; these are growth descriptions, not exact seconds.
 - **Stable:** items with equal sort values keep their earlier relative order.
 
 The diagrams show the same numbers as the runnable code, so you can compare each step with the final output.
