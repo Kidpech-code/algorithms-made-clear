@@ -2,12 +2,13 @@
 
 **Algorithms and data structures explained through everyday stories, pictures, classroom math, and runnable Go.**
 
-The four chapters use the same six numbers. First, put them in order with Bubble Sort, Merge Sort, or Quick Sort. Then find a number with Linear Search or Binary Search. See how Arrays and Linked Lists store and reach those numbers. Finally, use Recursion to solve a problem by reducing it to a smaller version of itself. Each guide moves from a familiar situation to a visual trace, a step-by-step method, the math behind it, and a runnable Go example.
+The five chapters use the same six numbers. First, put them in order with Bubble Sort, Merge Sort, or Quick Sort. Then find a number with Linear Search or Binary Search. See how Arrays and Linked Lists store and reach those numbers. Use Recursion to solve a smaller version of the same problem. Finally, connect the six numbers as rooms in a graph and explore them with Breadth-First Search or Depth-First Search. Each guide moves from a familiar situation to a visual trace, a step-by-step method, the math behind it, and a runnable Go example.
 
 - [Chapter 1: Sorting Algorithms](#chapter-1-sorting-algorithms)
 - [Chapter 2: Search Algorithms](#chapter-2-search-algorithms)
 - [Chapter 3: Data Structures](#chapter-3-data-structures)
 - [Chapter 4: Recursion](#chapter-4-recursion)
+- [Chapter 5: Graph Algorithms](#chapter-5-graph-algorithms)
 
 ## Chapter 1: Sorting Algorithms
 
@@ -237,6 +238,58 @@ Empty slice: 0
 ```
 
 Read the [Go implementation](recursion/sum.go) and [runnable example](examples/recursion/main.go), or run `go test ./...`. `values[1:]` creates a smaller slice view; it does not copy all the remaining elements.
+
+## Chapter 5: Graph Algorithms
+
+Imagine six numbered rooms connected by doors. Starting in room **5**, you want to reach room **3**. The numbers are **room labels**, not values to sort. A graph records which rooms connect; an edge represents one door that works in both directions.
+
+![Six-room graph comparing Breadth-First Search and Depth-First Search from room 5 to room 3](assets/graph-overview.svg)
+
+The doors are `5–1`, `5–4`, `1–2`, `1–8`, `4–3`, and `8–3`. The order of neighbors matters for the exact visit traces below; the Go example checks them in this order:
+
+| Room | Neighbors |
+| ---: | --- |
+| 5 | 1, 4 |
+| 1 | 5, 2, 8 |
+| 4 | 5, 3 |
+| 2 | 1 |
+| 8 | 1, 3 |
+| 3 | 4, 8 |
+
+| Method | Next room comes from | Full visit order from 5 | First path found to 3 |
+| --- | --- | --- | --- |
+| [**Breadth-First Search (BFS)**](guides/breadth-first-search.md) | A **queue**: explore rooms one door away, then two doors away. | `5, 1, 4, 2, 8, 3` | `5 → 4 → 3`: **2 doors**, the fewest possible here. |
+| [**Depth-First Search (DFS)**](guides/depth-first-search.md) | Recursive calls: follow a route, then backtrack. | `5, 1, 2, 8, 3, 4` | `5 → 1 → 8 → 3`: **3 doors**, so this first route is longer. |
+
+```mermaid
+flowchart LR
+  R5["5 · start"] --- R1["1"]
+  R5 --- R4["4"]
+  R1 --- R2["2"]
+  R1 --- R8["8"]
+  R4 --- R3["3 · goal"]
+  R8 --- R3
+```
+
+BFS reaches rooms in increasing **number of doors** from the start, so its first route to a room uses the fewest edges. If every door has the same cost, it also has the lowest total cost. DFS answers reachability and exposes paths and backtracking, but its first route need not be shortest. Both mark a room as visited so cycles do not cause repeated exploration. The guides show the queue or call stack step by step, prove these claims, and derive `O(V + E)` time and `O(V)` extra space for an adjacency-list graph with `V` rooms and `E` doors. This example has `V = 6` and `E = 6`.
+
+### Run the graph example
+
+With Go 1.22 or newer, run this from the repo root on **macOS, Linux, or Windows (PowerShell)**:
+
+```sh
+go run ./examples/graph-search
+```
+
+```text
+Edges: 5-1, 5-4, 1-2, 1-8, 4-3, 8-3
+BFS order from 5: [5 1 4 2 8 3]
+BFS path to 3: [5 4 3]
+DFS order from 5: [5 1 2 8 3 4]
+DFS path to 3: [5 1 8 3]
+```
+
+Both functions visit every room reachable from the start, even after discovering room 3, so the output shows a full traversal. Read the [Go implementations](graphsearch/walk.go) and [runnable example](examples/graph-search/main.go), or run `go test ./...`.
 
 ## License
 

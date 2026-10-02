@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="850" viewBox="0 0 1320 850" role="img" aria-labelledby="title desc">
+<title id="title">Depth-first search on six rooms</title>
+<desc id="desc">The two-way corridors are 5–1, 5–4, 1–2, 1–8, 4–3, and 8–3. Start at room 5, follow the shown neighbor order, and recurse into each unseen neighbor. First-visit order: 5, 1, 2, 8, 3, 4. The first path to room 3 is 5 to 1 to 8 to 3, three doors; it is not necessarily shortest.</desc>
+<rect x="0" y="0" width="1320" height="850" rx="0" fill="#F5F8FB" stroke="none" stroke-width="0"/>
+<rect x="0" y="0" width="1320" height="168" rx="0" fill="#142B3E" stroke="none" stroke-width="0"/>
+<rect x="56" y="49" width="8" height="70" rx="4" fill="#40C5C1" stroke="none" stroke-width="0"/>
+<text x="84" y="78" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">05 / DEPTH-FIRST SEARCH</text>
+<text x="84" y="128" fill="#D1E4EE" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Follow one branch, then return to try the next.</text>
+<rect x="54" y="200" width="710" height="580" rx="24" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2"/>
+<text x="88" y="252" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start">THE SAME ROOM MAP</text>
+<text x="88" y="285" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Every corridor works both ways.</text>
+<line x1="420" y1="335" x2="260" y2="490" stroke="#9AAFC0" stroke-width="5" stroke-linecap="round"/>
+<line x1="420" y1="335" x2="620" y2="490" stroke="#9AAFC0" stroke-width="5" stroke-linecap="round"/>
+<line x1="260" y1="490" x2="160" y2="678" stroke="#9AAFC0" stroke-width="5" stroke-linecap="round"/>
+<line x1="260" y1="490" x2="390" y2="678" stroke="#9AAFC0" stroke-width="5" stroke-linecap="round"/>
+<line x1="620" y1="490" x2="620" y2="678" stroke="#9AAFC0" stroke-width="5" stroke-linecap="round"/>
+<line x1="390" y1="678" x2="620" y2="678" stroke="#9AAFC0" stroke-width="5" stroke-linecap="round"/>
+<line x1="420" y1="335" x2="260" y2="490" stroke="#A95D10" stroke-width="9" stroke-linecap="round"/>
+<line x1="260" y1="490" x2="390" y2="678" stroke="#A95D10" stroke-width="9" stroke-linecap="round"/>
+<line x1="390" y1="678" x2="620" y2="678" stroke="#A95D10" stroke-width="9" stroke-linecap="round"/>
+<circle cx="420" cy="335" r="37" fill="#A95D10" stroke="#A95D10" stroke-width="3"/><text x="420" y="347" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="middle">5</text>
+<circle cx="260" cy="490" r="37" fill="#A95D10" stroke="#A95D10" stroke-width="3"/><text x="260" y="502" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="middle">1</text>
+<circle cx="620" cy="490" r="37" fill="#DBEFFA" stroke="#55A8CC" stroke-width="3"/><text x="620" y="502" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="middle">4</text>
+<circle cx="160" cy="678" r="37" fill="#DBEFFA" stroke="#55A8CC" stroke-width="3"/><text x="160" y="690" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="middle">2</text>
+<circle cx="390" cy="678" r="37" fill="#A95D10" stroke="#A95D10" stroke-width="3"/><text x="390" y="690" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="middle">8</text>
+<circle cx="620" cy="678" r="37" fill="#A95D10" stroke="#A95D10" stroke-width="3"/><text x="620" y="690" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="middle">3</text>
+<text x="88" y="753" fill="#A95D10" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start">Colored first route to room 3: 5 → 1 → 8 → 3 (3 doors).</text>
+<rect x="790" y="200" width="476" height="580" rx="24" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2"/>
+<text x="824" y="251" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="start">DFS / THE CALL STACK</text>
+<text x="824" y="283" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">Enter a room; return when a branch ends.</text>
+<text x="823" y="323" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="start">Action</text>
+<text x="1000" y="323" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="start">Current path / stack</text>
+<line x1="821" y1="339" x2="1232" y2="339" stroke="#D6E3ED" stroke-width="2" stroke-linecap="round"/>
+<rect x="821" y="345" width="411" height="39" rx="8" fill="#F5F8FB" stroke="none" stroke-width="0"/>
+<text x="837" y="372" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">visit 5</text>
+<text x="1000" y="372" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">[5]</text>
+<text x="837" y="416" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">visit 1</text>
+<text x="1000" y="416" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">[5, 1]</text>
+<rect x="821" y="433" width="411" height="39" rx="8" fill="#F5F8FB" stroke="none" stroke-width="0"/>
+<text x="837" y="460" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">visit 2</text>
+<text x="1000" y="460" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">[5, 1, 2]</text>
+<text x="837" y="504" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">return</text>
+<text x="1000" y="504" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">[5, 1]</text>
+<rect x="821" y="521" width="411" height="39" rx="8" fill="#F5F8FB" stroke="none" stroke-width="0"/>
+<text x="837" y="548" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">visit 8</text>
+<text x="1000" y="548" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">[5, 1, 8]</text>
+<text x="837" y="592" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">visit 3</text>
+<text x="1000" y="592" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" text-anchor="start">[5, 1, 8, 3]</text>
+<rect x="821" y="609" width="411" height="39" rx="8" fill="#F5F8FB" stroke="none" stroke-width="0"/>
+<text x="837" y="636" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">visit 4</text>
+<text x="1000" y="636" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">[5, 1, 8, 3, 4]</text>
+<rect x="821" y="696" width="411" height="64" rx="15" fill="#FFF4E5" stroke="#A95D10" stroke-width="2"/>
+<text x="843" y="724" fill="#A95D10" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="start">VISIT ORDER</text>
+<text x="843" y="749" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start">5 → 1 → 2 → 8 → 3 → 4</text>
+<text x="660" y="826" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="middle">This first path to room 3 is not the shortest; BFS finds one with 2 doors.</text>
+</svg>

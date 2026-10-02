@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="795" viewBox="0 0 1320 795" role="img" aria-labelledby="title desc">
+<title id="title">Graph algorithms: breadth-first and depth-first search</title>
+<desc id="desc">Six rooms form an undirected graph with corridors 5–1, 5–4, 1–2, 1–8, 4–3, and 8–3. Starting at 5, breadth-first search visits 5, 1, 4, 2, 8, 3; depth-first search visits 5, 1, 2, 8, 3, 4.</desc>
+<rect x="0" y="0" width="1320" height="795" rx="0" fill="#F5F8FB" stroke="none" stroke-width="0"/>
+<rect x="0" y="0" width="1320" height="168" rx="0" fill="#142B3E" stroke="none" stroke-width="0"/>
+<rect x="56" y="49" width="8" height="70" rx="4" fill="#40C5C1" stroke="none" stroke-width="0"/>
+<text x="84" y="78" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">05 / GRAPH ALGORITHMS</text>
+<text x="84" y="128" fill="#D1E4EE" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">One map, two ways to explore it.</text>
+<rect x="54" y="195" width="1212" height="71" rx="18" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2"/>
+<text x="87" y="240" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">Six numbered rooms, six two-way corridors. Start at room 5.</text>
+<rect x="54" y="286" width="750" height="433" rx="24" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2"/>
+<text x="87" y="333" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="start">THE ROOM MAP</text>
+<text x="87" y="364" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">A line means you can walk in either direction.</text>
+<line x1="430" y1="412" x2="260" y2="515" stroke="#9AAFC0" stroke-width="5" stroke-linecap="round"/>
+<line x1="430" y1="412" x2="620" y2="515" stroke="#9AAFC0" stroke-width="5" stroke-linecap="round"/>
+<line x1="260" y1="515" x2="160" y2="651" stroke="#9AAFC0" stroke-width="5" stroke-linecap="round"/>
+<line x1="260" y1="515" x2="390" y2="651" stroke="#9AAFC0" stroke-width="5" stroke-linecap="round"/>
+<line x1="620" y1="515" x2="620" y2="651" stroke="#9AAFC0" stroke-width="5" stroke-linecap="round"/>
+<line x1="390" y1="651" x2="620" y2="651" stroke="#9AAFC0" stroke-width="5" stroke-linecap="round"/>
+<circle cx="430" cy="412" r="37" fill="#DBEFFA" stroke="#55A8CC" stroke-width="3"/><text x="430" y="424" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="middle">5</text>
+<circle cx="260" cy="515" r="37" fill="#DBEFFA" stroke="#55A8CC" stroke-width="3"/><text x="260" y="527" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="middle">1</text>
+<circle cx="620" cy="515" r="37" fill="#DBEFFA" stroke="#55A8CC" stroke-width="3"/><text x="620" y="527" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="middle">4</text>
+<circle cx="160" cy="651" r="37" fill="#DBEFFA" stroke="#55A8CC" stroke-width="3"/><text x="160" y="663" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="middle">2</text>
+<circle cx="390" cy="651" r="37" fill="#DBEFFA" stroke="#55A8CC" stroke-width="3"/><text x="390" y="663" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="middle">8</text>
+<circle cx="620" cy="651" r="37" fill="#DBEFFA" stroke="#55A8CC" stroke-width="3"/><text x="620" y="663" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="middle">3</text>
+<rect x="830" y="286" width="436" height="207" rx="24" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2"/>
+<rect x="850" y="308" width="7" height="51" rx="3" fill="#0B766E" stroke="none" stroke-width="0"/>
+<text x="875" y="341" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="start">BFS / LAYER BY LAYER</text>
+<text x="862" y="382" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Visit order</text>
+<circle cx="876" cy="429" r="22" fill="#0B766E"/>
+<text x="876" y="437" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle">5</text>
+<text x="907" y="436" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">→</text>
+<circle cx="938" cy="429" r="22" fill="#0B766E"/>
+<text x="938" y="437" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle">1</text>
+<text x="969" y="436" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">→</text>
+<circle cx="1000" cy="429" r="22" fill="#0B766E"/>
+<text x="1000" y="437" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle">4</text>
+<text x="1031" y="436" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">→</text>
+<circle cx="1062" cy="429" r="22" fill="#0B766E"/>
+<text x="1062" y="437" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle">2</text>
+<text x="1093" y="436" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">→</text>
+<circle cx="1124" cy="429" r="22" fill="#0B766E"/>
+<text x="1124" y="437" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle">8</text>
+<text x="1155" y="436" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">→</text>
+<circle cx="1186" cy="429" r="22" fill="#0B766E"/>
+<text x="1186" y="437" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle">3</text>
+<text x="862" y="473" fill="#0B766E" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start">Nearest rooms are handled first.</text>
+<rect x="830" y="512" width="436" height="207" rx="24" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2"/>
+<rect x="850" y="534" width="7" height="51" rx="3" fill="#A95D10" stroke="none" stroke-width="0"/>
+<text x="875" y="567" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="start">DFS / FOLLOW A BRANCH</text>
+<text x="862" y="608" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Visit order</text>
+<circle cx="876" cy="655" r="22" fill="#A95D10"/>
+<text x="876" y="663" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle">5</text>
+<text x="907" y="662" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">→</text>
+<circle cx="938" cy="655" r="22" fill="#A95D10"/>
+<text x="938" y="663" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle">1</text>
+<text x="969" y="662" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">→</text>
+<circle cx="1000" cy="655" r="22" fill="#A95D10"/>
+<text x="1000" y="663" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle">2</text>
+<text x="1031" y="662" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">→</text>
+<circle cx="1062" cy="655" r="22" fill="#A95D10"/>
+<text x="1062" y="663" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle">8</text>
+<text x="1093" y="662" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">→</text>
+<circle cx="1124" cy="655" r="22" fill="#A95D10"/>
+<text x="1124" y="663" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle">3</text>
+<text x="1155" y="662" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">→</text>
+<circle cx="1186" cy="655" r="22" fill="#A95D10"/>
+<text x="1186" y="663" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle">4</text>
+<text x="862" y="699" fill="#A95D10" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start">Backtrack when a branch ends.</text>
+<text x="660" y="765" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="middle">Same rooms and corridors; the visit order changes.</text>
+</svg>
