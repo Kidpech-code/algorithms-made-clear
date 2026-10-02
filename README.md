@@ -2,13 +2,14 @@
 
 **Algorithms and data structures explained through everyday stories, pictures, classroom math, and runnable Go.**
 
-The five chapters use the same six numbers. First, put them in order with Bubble Sort, Merge Sort, or Quick Sort. Then find a number with Linear Search or Binary Search. See how Arrays and Linked Lists store and reach those numbers. Use Recursion to solve a smaller version of the same problem. Finally, connect the six numbers as rooms in a graph and explore them with Breadth-First Search or Depth-First Search. Each guide moves from a familiar situation to a visual trace, a step-by-step method, the math behind it, and a runnable Go example.
+The first five chapters reuse the same six numbers. Sort them, search them, store them as data structures, total them recursively, and connect them as rooms in a graph. Chapter 6 takes three of those numbers as fictional token values and asks how to reach an exact amount with as few tokens as possible. Each guide moves from a familiar situation to a visual trace, a step-by-step method, the math behind it, and a runnable Go example.
 
 - [Chapter 1: Sorting Algorithms](#chapter-1-sorting-algorithms)
 - [Chapter 2: Search Algorithms](#chapter-2-search-algorithms)
 - [Chapter 3: Data Structures](#chapter-3-data-structures)
 - [Chapter 4: Recursion](#chapter-4-recursion)
 - [Chapter 5: Graph Algorithms](#chapter-5-graph-algorithms)
+- [Chapter 6: Dynamic Programming](#chapter-6-dynamic-programming)
 
 ## Chapter 1: Sorting Algorithms
 
@@ -290,6 +291,54 @@ DFS path to 3: [5 1 8 3]
 ```
 
 Both functions visit every room reachable from the start, even after discovering room 3, so the output shows a full traversal. Read the [Go implementations](graphsearch/walk.go) and [runnable example](examples/graph-search/main.go), or run `go test ./...`.
+
+## Chapter 6: Dynamic Programming
+
+An arcade has fictional tokens worth **1, 3, or 4 credits**. You need exactly **6 credits** using as few tokens as possible, with unlimited tokens of each value. Taking the largest token first gives `4 + 1 + 1`: **3 tokens**. But `3 + 3` reaches 6 with only **2 tokens**. A tempting choice at one step need not make the best complete solution.
+
+![Dynamic programming compares a largest-first token choice with the optimal two-token solution](assets/dynamic-programming-overview.svg)
+
+Dynamic programming solves each **smaller amount** once and reuses its answer. Let `F(a)` be the minimum tokens needed for amount `a`:
+
+```text
+F(0) = 0
+F(a) = 1 + min F(a - c), for a positive token value c ≤ a
+```
+
+Ignore candidates whose remaining amount cannot be made. If none work, the answer is **`-1` (impossible)**. For amount 6, the final step could use a token worth 1, 3, or 4:
+
+| Last token `c` | Earlier amount `6 − c` | Tokens needed `1 + F(6 − c)` |
+| ---: | ---: | ---: |
+| 1 | 5 | `1 + 2 = 3` |
+| **3** | **3** | **`1 + 1 = 2`** |
+| 4 | 2 | `1 + 2 = 3` |
+
+```mermaid
+flowchart LR
+  A["Find F(6)"] --> B["Use 1: 1 + F(5) = 3"]
+  A --> C["Use 3: 1 + F(3) = 2"]
+  A --> D["Use 4: 1 + F(2) = 3"]
+  C --> E["Choose 2 tokens: 3 + 3"]
+```
+
+The [visual Dynamic Programming guide](guides/dynamic-programming.md) works through all amounts from 0 to 6 and proves the rule. It teaches two ways to reuse answers: **memoization** starts with the question for 6 and caches smaller answers as recursion needs them; **tabulation** fills a table from 0 upward. Both take `O(A × C)` time and `O(A)` extra space for target amount `A` and `C` token values. The Go functions return the minimum **count**, not the particular tokens; the guide shows how `3 + 3` follows from the table. Negative amounts and nonpositive token values are invalid; a valid but unreachable amount returns `-1`.
+
+### Run the Dynamic Programming example
+
+With Go 1.22 or newer, run this from the repo root on **macOS, Linux, or Windows (PowerShell)**:
+
+```sh
+go run ./examples/dynamic-programming
+```
+
+```text
+Token values: [1 3 4]
+Target: 6
+Memoization: 2 tokens
+Tabulation: 2 tokens
+```
+
+Read the [Go implementations](dynamicprogramming/mincoins.go) and [runnable example](examples/dynamic-programming/main.go), or run `go test ./...`. For large numeric targets, the table needs space proportional to the target; the recursive memoized version also uses call-stack space.
 
 ## License
 
