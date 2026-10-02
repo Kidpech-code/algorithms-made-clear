@@ -2,7 +2,7 @@
 
 **Algorithms and data structures explained through everyday stories, pictures, classroom math, and runnable Go.**
 
-The first five chapters reuse the same six numbers. Sort them, search them, store them as data structures, total them recursively, and connect them as rooms in a graph. Chapter 6 takes three of those numbers as fictional token values and asks how to reach an exact amount with as few tokens as possible. Each guide moves from a familiar situation to a visual trace, a step-by-step method, the math behind it, and a runnable Go example.
+The first five chapters reuse the same six numbers. Sort them, search them, store them as data structures, total them recursively, and connect them as rooms in a graph. Chapter 6 uses fictional tokens to introduce dynamic programming. Chapter 7 returns to the rooms and adds walking times to find the fastest route. Each guide moves from a familiar situation to a visual trace, a step-by-step method, the math behind it, and a runnable Go example.
 
 - [Chapter 1: Sorting Algorithms](#chapter-1-sorting-algorithms)
 - [Chapter 2: Search Algorithms](#chapter-2-search-algorithms)
@@ -10,6 +10,7 @@ The first five chapters reuse the same six numbers. Sort them, search them, stor
 - [Chapter 4: Recursion](#chapter-4-recursion)
 - [Chapter 5: Graph Algorithms](#chapter-5-graph-algorithms)
 - [Chapter 6: Dynamic Programming](#chapter-6-dynamic-programming)
+- [Chapter 7: Shortest Paths with Dijkstra's Algorithm](#chapter-7-shortest-paths-with-dijkstras-algorithm)
 
 ## Chapter 1: Sorting Algorithms
 
@@ -339,6 +340,52 @@ Tabulation: 2 tokens
 ```
 
 Read the [Go implementations](dynamicprogramming/mincoins.go) and [runnable example](examples/dynamic-programming/main.go), or run `go test ./...`. For large numeric targets, the table needs space proportional to the target; the recursive memoized version also uses call-stack space.
+
+## Chapter 7: Shortest Paths with Dijkstra's Algorithm
+
+The museum rooms from [Chapter 5](#chapter-5-graph-algorithms) now have corridors that take different amounts of time to walk. From room **5** to room **3**, BFS finds `5 → 4 → 3`: only **2 corridors**, but **11 minutes**. The route `5 → 1 → 8 → 3` crosses **3 corridors** and takes only **7 minutes**. When costs differ, fewest steps and lowest total cost are different questions.
+
+![Two routes from room 5 to room 3: BFS uses fewer corridors, while Dijkstra finds the faster route](assets/shortest-path-overview.svg)
+
+| Question | Method | Route | Result |
+| --- | --- | --- | --- |
+| Fewest corridors? | [BFS](guides/breadth-first-search.md) | `5 → 4 → 3` | 2 corridors; `6 + 5 = 11` minutes |
+| Fewest minutes? | [Dijkstra](guides/dijkstra.md) | `5 → 1 → 8 → 3` | 3 corridors; `2 + 3 + 2 = 7` minutes |
+
+Let `d(v)` be the best known travel time from room 5 to room `v`. Start with `d(5) = 0` and all other times unknown. Repeatedly choose the unsettled room with the smallest known time, then check whether walking through it improves a neighbor's time:
+
+```text
+d(v) = min(d(v), d(u) + corridor_time(u, v))
+```
+
+For example, room 8 is 5 minutes from room 5 via room 1. Its corridor to room 3 takes 2 more minutes, so `d(3)` becomes `5 + 2 = 7`. A route via room 4 would take `6 + 5 = 11`, so it cannot improve that answer.
+
+```mermaid
+flowchart LR
+  A["Start at room 5<br/>time 0"] --> B["Choose the nearest<br/>unsettled room"]
+  B --> C["Try each corridor<br/>new time = current time + corridor time"]
+  C --> D{"Room 3 settled?"}
+  D -- No --> B
+  D -- Yes --> E["Follow recorded parents<br/>5 → 1 → 8 → 3; 7 minutes"]
+```
+
+The [illustrated Dijkstra guide](guides/dijkstra.md) traces every distance update and explains why choosing the nearest unsettled room is safe **only when corridor costs are nonnegative**. It also shows how to recover the route, when BFS is enough, and how a priority queue keeps the next best candidate available.
+
+### Run the shortest-path example
+
+With Go 1.22 or newer, run this from the repo root on **macOS, Linux, or Windows (PowerShell)**:
+
+```sh
+go run ./examples/dijkstra
+```
+
+```text
+BFS (fewest doors): [5 4 3]
+Dijkstra (least time): [5 1 8 3]
+Travel time: 7 minutes
+```
+
+Read the [Go implementation](graphsearch/dijkstra.go) and [runnable example](examples/dijkstra/main.go), or run `go test ./...`. The implementation returns `-1` with no path for an unreachable goal, rejects negative corridor costs, and reports a reachable total that exceeds Go's `int` range.
 
 ## License
 

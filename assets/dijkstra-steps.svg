@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="940" viewBox="0 0 1320 940" role="img" aria-labelledby="title desc">
+<title id="title">Dijkstra step-by-step on a six-room weighted graph</title>
+<desc id="desc">Two-way corridors and their nonnegative walking times are 5 to 1: 2 minutes, 5 to 4: 6, 1 to 2: 2, 1 to 8: 3, 4 to 3: 5, and 8 to 3: 2. Starting at room 5, Dijkstra settles rooms 5 at 0, 1 at 2, 2 at 4, 8 at 5, 4 at 6, then 3 at 7 minutes. The fastest route is 5 to 1 to 8 to 3, taking 7 minutes.</desc>
+<rect width="1320" height="940" fill="#F5F8FB"/>
+<rect width="1320" height="168" fill="#142B3E"/>
+<rect x="56" y="49" width="8" height="70" rx="4" fill="#40C5C1"/>
+<text x="84" y="78" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700">07 / DIJKSTRA STEP BY STEP</text>
+<text x="84" y="128" fill="#D1E4EE" font-family="Arial, Helvetica, sans-serif" font-size="25">Keep the smallest known travel time to every room.</text>
+
+<rect x="54" y="190" width="1212" height="76" rx="21" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2"/>
+<text x="88" y="239" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">Start at room 5 · Reach room 3 · Every corridor works both ways</text>
+
+<rect x="54" y="286" width="760" height="529" rx="24" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2"/>
+<text x="88" y="334" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">THE WEIGHTED ROOM MAP</text>
+<text x="88" y="366" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="21">Numbers on corridors are walking times in minutes.</text>
+
+<line x1="430" y1="415" x2="260" y2="540" stroke="#9AAFC0" stroke-width="6" stroke-linecap="round"/>
+<line x1="430" y1="415" x2="635" y2="540" stroke="#9AAFC0" stroke-width="6" stroke-linecap="round"/>
+<line x1="260" y1="540" x2="150" y2="725" stroke="#9AAFC0" stroke-width="6" stroke-linecap="round"/>
+<line x1="260" y1="540" x2="390" y2="725" stroke="#9AAFC0" stroke-width="6" stroke-linecap="round"/>
+<line x1="635" y1="540" x2="635" y2="725" stroke="#9AAFC0" stroke-width="6" stroke-linecap="round"/>
+<line x1="390" y1="725" x2="635" y2="725" stroke="#9AAFC0" stroke-width="6" stroke-linecap="round"/>
+<line x1="430" y1="415" x2="260" y2="540" stroke="#0B766E" stroke-width="10" stroke-linecap="round"/>
+<line x1="260" y1="540" x2="390" y2="725" stroke="#0B766E" stroke-width="10" stroke-linecap="round"/>
+<line x1="390" y1="725" x2="635" y2="725" stroke="#0B766E" stroke-width="10" stroke-linecap="round"/>
+
+<rect x="304" y="456" width="58" height="39" rx="12" fill="#EAF6F4" stroke="#0B766E" stroke-width="2"/>
+<text x="333" y="483" text-anchor="middle" fill="#0B605B" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">2</text>
+<rect x="503" y="455" width="58" height="39" rx="12" fill="#FFFFFF" stroke="#9AAFC0" stroke-width="2"/>
+<text x="532" y="482" text-anchor="middle" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">6</text>
+<rect x="174" y="613" width="58" height="39" rx="12" fill="#FFFFFF" stroke="#9AAFC0" stroke-width="2"/>
+<text x="203" y="640" text-anchor="middle" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">2</text>
+<rect x="296" y="613" width="58" height="39" rx="12" fill="#EAF6F4" stroke="#0B766E" stroke-width="2"/>
+<text x="325" y="640" text-anchor="middle" fill="#0B605B" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">3</text>
+<rect x="656" y="613" width="58" height="39" rx="12" fill="#FFFFFF" stroke="#9AAFC0" stroke-width="2"/>
+<text x="685" y="640" text-anchor="middle" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">5</text>
+<rect x="484" y="685" width="58" height="39" rx="12" fill="#EAF6F4" stroke="#0B766E" stroke-width="2"/>
+<text x="513" y="712" text-anchor="middle" fill="#0B605B" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">2</text>
+
+<circle cx="430" cy="415" r="37" fill="#0B766E" stroke="#0B766E" stroke-width="3"/>
+<text x="430" y="428" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700">5</text>
+<circle cx="260" cy="540" r="37" fill="#0B766E" stroke="#0B766E" stroke-width="3"/>
+<text x="260" y="553" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700">1</text>
+<circle cx="635" cy="540" r="37" fill="#DBEFFA" stroke="#55A8CC" stroke-width="3"/>
+<text x="635" y="553" text-anchor="middle" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700">4</text>
+<circle cx="150" cy="725" r="37" fill="#DBEFFA" stroke="#55A8CC" stroke-width="3"/>
+<text x="150" y="738" text-anchor="middle" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700">2</text>
+<circle cx="390" cy="725" r="37" fill="#0B766E" stroke="#0B766E" stroke-width="3"/>
+<text x="390" y="738" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700">8</text>
+<circle cx="635" cy="725" r="37" fill="#0B766E" stroke="#0B766E" stroke-width="3"/>
+<text x="635" y="738" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700">3</text>
+
+<rect x="839" y="286" width="427" height="529" rx="24" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2"/>
+<text x="873" y="334" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">SETTLE THE NEXT ROOM</text>
+<text x="873" y="366" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="20">Pick the smallest tentative time.</text>
+<text x="873" y="395" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">ROOM (TIME)</text>
+<text x="1035" y="395" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">NEW BEST TIMES</text>
+
+<rect x="866" y="408" width="373" height="45" rx="9" fill="#F5F8FB"/>
+<text x="883" y="439" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">5 (0)</text>
+<text x="1035" y="439" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22">1: 2, 4: 6</text>
+<text x="883" y="492" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">1 (2)</text>
+<text x="1035" y="492" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22">2: 4, 8: 5</text>
+<rect x="866" y="514" width="373" height="45" rx="9" fill="#F5F8FB"/>
+<text x="883" y="545" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">2 (4)</text>
+<text x="1035" y="545" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22">none</text>
+<text x="883" y="598" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">8 (5)</text>
+<text x="1035" y="598" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22">3: 7</text>
+<rect x="866" y="620" width="373" height="45" rx="9" fill="#F5F8FB"/>
+<text x="883" y="651" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">4 (6)</text>
+<text x="1035" y="651" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22">3 stays 7</text>
+<text x="883" y="704" fill="#0B605B" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">3 (7)</text>
+<text x="1035" y="704" fill="#0B605B" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">goal reached</text>
+<rect x="866" y="733" width="373" height="57" rx="14" fill="#EAF6F4" stroke="#9CCDC5" stroke-width="2"/>
+<text x="885" y="769" fill="#0B605B" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700">5 → 1 → 8 → 3 = 7 min</text>
+
+<rect x="54" y="837" width="1212" height="67" rx="20" fill="#EAF6F4" stroke="#9CCDC5" stroke-width="2"/>
+<text x="88" y="879" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">Relaxation: add a corridor time; update the neighbor if the new total is smaller.</text>
+<text x="660" y="930" text-anchor="middle" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="19">The highlighted route takes 2 + 3 + 2 = 7 minutes; the two-door route 5 → 4 → 3 takes 11.</text>
+</svg>
