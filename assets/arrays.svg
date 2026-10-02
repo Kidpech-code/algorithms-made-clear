@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="924" viewBox="0 0 1320 924" role="img" aria-labelledby="title desc">
+<title id="title">Arrays: indexes, direct access, and a value update</title>
+<desc id="desc">A Go array [6]int contains 5, 1, 4, 2, 8, 3. Its indexes are 0 through 5. Index 3 holds 2, so A[3] is 2. Changing A[3] to 7 changes only that slot; the array still has six elements.</desc>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1 L10 6 L1 11" fill="none" stroke="#2F7F8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="1320" height="924" fill="#F5F8FB"/>
+<rect width="1320" height="168" fill="#142B3E"/>
+<rect x="56" y="49" width="8" height="70" rx="4" fill="#40C5C1"/>
+<text x="84" y="78" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">03 / ARRAYS</text>
+<text x="84" y="128" fill="#D1E4EE" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Six numbered slots. Pick an index to read or change one value.</text>
+<rect x="54" y="190" width="1212" height="326" rx="26" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2" />
+<text x="90" y="246" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="start">START WITH SIX VALUES</text>
+<text x="90" y="285" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" text-anchor="start">A := [6]int{5, 1, 4, 2, 8, 3}</text>
+<text x="243" y="341" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">index 0</text>
+<rect x="183" y="357" width="120" height="88" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="243.0" y="414.0" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="45" font-weight="700" text-anchor="middle">5</text>
+<text x="409" y="341" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">index 1</text>
+<rect x="349" y="357" width="120" height="88" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="409.0" y="414.0" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="45" font-weight="700" text-anchor="middle">1</text>
+<text x="575" y="341" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">index 2</text>
+<rect x="515" y="357" width="120" height="88" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="575.0" y="414.0" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="45" font-weight="700" text-anchor="middle">4</text>
+<text x="741" y="341" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">index 3</text>
+<rect x="681" y="357" width="120" height="88" rx="14" fill="#FFF0C6" stroke="#E0A03E" stroke-width="2" />
+<text x="741.0" y="414.0" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="45" font-weight="700" text-anchor="middle">2</text>
+<text x="907" y="341" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">index 4</text>
+<rect x="847" y="357" width="120" height="88" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="907.0" y="414.0" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="45" font-weight="700" text-anchor="middle">8</text>
+<text x="1073" y="341" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="middle">index 5</text>
+<rect x="1013" y="357" width="120" height="88" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="1073.0" y="414.0" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="45" font-weight="700" text-anchor="middle">3</text>
+<rect x="527" y="466" width="266" height="41" rx="20" fill="#DCF5E9" stroke="#42A576" stroke-width="2" />
+<text x="660" y="493" fill="#0B7054" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="middle">A[3] = 2</text>
+<rect x="54" y="536" width="1212" height="166" rx="26" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2" />
+<text x="90" y="588" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">DIRECT ACCESS</text>
+<text x="90" y="629" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">Index 3 means the fourth slot.</text>
+<text x="90" y="668" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">One indexed read: O(1).</text>
+<rect x="682" y="557" width="548" height="119" rx="16" fill="#142B3E" stroke="#142B3E" stroke-width="0" />
+<text x="716" y="603" fill="#D1E4EE" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="start">Choose index 3 directly</text>
+<text x="716" y="644" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="start">Read slot 3: value 2</text>
+<rect x="54" y="722" width="1212" height="182" rx="26" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2" />
+<text x="90" y="777" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start">CHANGE THE VALUE, KEEP THE LENGTH</text>
+<text x="90" y="816" fill="#0B7054" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="start">A[3] = 7</text>
+<text x="90" y="855" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Result: [5, 1, 4, 7, 8, 3]</text>
+<rect x="668" y="762" width="70" height="69" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="703" y="809.5" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" text-anchor="middle">5</text>
+<rect x="763" y="762" width="70" height="69" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="798" y="809.5" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" text-anchor="middle">1</text>
+<rect x="858" y="762" width="70" height="69" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="893" y="809.5" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" text-anchor="middle">4</text>
+<rect x="953" y="762" width="70" height="69" rx="14" fill="#DCF5E9" stroke="#42A576" stroke-width="2" />
+<text x="988" y="809.5" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" text-anchor="middle">7</text>
+<rect x="1048" y="762" width="70" height="69" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="1083" y="809.5" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" text-anchor="middle">8</text>
+<rect x="1143" y="762" width="70" height="69" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="1178" y="809.5" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" text-anchor="middle">3</text>
+<text x="668" y="865" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Length stays 6. In Go, [6]int is an array type.</text>
+</svg>

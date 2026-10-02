@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="1110" viewBox="0 0 1320 1110" role="img" aria-labelledby="title desc">
+<title id="title">Singly linked list: traversal, prepend, and deletion</title>
+<desc id="desc">Starting list head to nil contains 5, 1, 4, 2, 8, 3. To reach value 2 at index 3, visit four nodes in order. Prepending 9 produces 9, 5, 1, 4, 2, 8, 3. From that new list, deleting the first 4 relinks node 1 to node 2 and gives 9, 5, 1, 2, 8, 3.</desc>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1 L10 6 L1 11" fill="none" stroke="#2F7F8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="1320" height="1110" fill="#F5F8FB"/>
+<rect width="1320" height="168" fill="#142B3E"/>
+<rect x="56" y="49" width="8" height="70" rx="4" fill="#40C5C1"/>
+<text x="84" y="78" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">03 / LINKED LISTS</text>
+<text x="84" y="128" fill="#D1E4EE" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Follow each next link. The nodes need not sit next to each other in memory.</text>
+<rect x="54" y="190" width="1212" height="346" rx="26" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2" />
+<text x="90" y="247" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">1 / WALK FROM HEAD</text>
+<text x="90" y="287" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">To reach index 3, visit four nodes: 5 → 1 → 4 → 2.</text>
+<text x="90" y="380" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">head</text>
+<line x1="144" y1="374" x2="169" y2="374" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="174" y="333" width="116" height="83" rx="15" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<line x1="251" y1="334" x2="251" y2="415" stroke="#55A8CC" stroke-width="2"/>
+<text x="212" y="385" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle">5</text>
+<text x="270" y="382" fill="#2F7F8A" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">•</text>
+<text x="232" y="449" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="middle">index 0</text>
+<line x1="290" y1="374" x2="340" y2="374" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="343" y="333" width="116" height="83" rx="15" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<line x1="420" y1="334" x2="420" y2="415" stroke="#55A8CC" stroke-width="2"/>
+<text x="381" y="385" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle">1</text>
+<text x="439" y="382" fill="#2F7F8A" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">•</text>
+<text x="401" y="449" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="middle">index 1</text>
+<line x1="459" y1="374" x2="509" y2="374" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="512" y="333" width="116" height="83" rx="15" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<line x1="589" y1="334" x2="589" y2="415" stroke="#55A8CC" stroke-width="2"/>
+<text x="550" y="385" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle">4</text>
+<text x="608" y="382" fill="#2F7F8A" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">•</text>
+<text x="570" y="449" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="middle">index 2</text>
+<line x1="628" y1="374" x2="678" y2="374" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="681" y="333" width="116" height="83" rx="15" fill="#DCF5E9" stroke="#42A576" stroke-width="2" />
+<line x1="758" y1="334" x2="758" y2="415" stroke="#42A576" stroke-width="2"/>
+<text x="719" y="385" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle">2</text>
+<text x="777" y="382" fill="#2F7F8A" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">•</text>
+<text x="739" y="449" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="middle">index 3</text>
+<line x1="797" y1="374" x2="847" y2="374" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="850" y="333" width="116" height="83" rx="15" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<line x1="927" y1="334" x2="927" y2="415" stroke="#55A8CC" stroke-width="2"/>
+<text x="888" y="385" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle">8</text>
+<text x="946" y="382" fill="#2F7F8A" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">•</text>
+<text x="908" y="449" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="middle">index 4</text>
+<line x1="966" y1="374" x2="1016" y2="374" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="1019" y="333" width="116" height="83" rx="15" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<line x1="1096" y1="334" x2="1096" y2="415" stroke="#55A8CC" stroke-width="2"/>
+<text x="1057" y="385" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle">3</text>
+<text x="1115" y="382" fill="#2F7F8A" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="middle">•</text>
+<text x="1077" y="449" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" text-anchor="middle">index 5</text>
+<line x1="1135" y1="374" x2="1180" y2="374" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="1190" y="383" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start">nil</text>
+<rect x="90" y="468" width="1140" height="50" rx="12" fill="#142B3E" stroke="#142B3E" stroke-width="0" />
+<text x="112" y="500" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start">There is no direct jump to index 3: finding it takes O(n) in general.</text>
+<rect x="54" y="556" width="1212" height="228" rx="26" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2" />
+<text x="90" y="612" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="start">2 / PREPEND 9</text>
+<text x="90" y="645" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">Point the new node to the old head; then move head to 9.</text>
+<text x="90" y="713" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="start">new head</text>
+<line x1="186" y1="706" x2="208" y2="706" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="213" y="675" width="92" height="64" rx="14" fill="#DCF5E9" stroke="#42A576" stroke-width="2" />
+<text x="259.0" y="720.0" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="700" text-anchor="middle">9</text>
+<line x1="306" y1="707" x2="346" y2="707" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="350" y="675" width="92" height="64" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="396.0" y="720.0" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="700" text-anchor="middle">5</text>
+<line x1="443" y1="707" x2="483" y2="707" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="487" y="675" width="92" height="64" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="533.0" y="720.0" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="700" text-anchor="middle">1</text>
+<line x1="580" y1="707" x2="620" y2="707" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="624" y="675" width="92" height="64" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="670.0" y="720.0" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="700" text-anchor="middle">4</text>
+<line x1="717" y1="707" x2="757" y2="707" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="761" y="675" width="92" height="64" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="807.0" y="720.0" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="700" text-anchor="middle">2</text>
+<line x1="854" y1="707" x2="894" y2="707" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="898" y="675" width="92" height="64" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="944.0" y="720.0" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="700" text-anchor="middle">8</text>
+<line x1="991" y1="707" x2="1031" y2="707" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="1035" y="675" width="92" height="64" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="1081.0" y="720.0" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="700" text-anchor="middle">3</text>
+<line x1="1128" y1="707" x2="1168" y2="707" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="1178" y="715" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">nil</text>
+<text x="90" y="766" fill="#0B7054" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">Result: [9, 5, 1, 4, 2, 8, 3]  ·  Head insertion: O(1)</text>
+<rect x="54" y="804" width="1212" height="286" rx="26" fill="#FFFFFF" stroke="#D6E3ED" stroke-width="2" />
+<text x="90" y="859" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="start">3 / DELETE THE FIRST 4 AFTER PREPEND</text>
+<text x="90" y="890" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Before: [9, 5, 1, 4, 2, 8, 3]</text>
+<text x="90" y="947" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">Links before</text>
+<rect x="316" y="908" width="85" height="55" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="358.5" y="948.5" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="middle">1</text>
+<rect x="448" y="908" width="85" height="55" rx="14" fill="#FFF0C6" stroke="#E0A03E" stroke-width="2" />
+<text x="490.5" y="948.5" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="middle">4</text>
+<rect x="580" y="908" width="85" height="55" rx="14" fill="#DBEFFA" stroke="#55A8CC" stroke-width="2" />
+<text x="622.5" y="948.5" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="middle">2</text>
+<line x1="402" y1="936" x2="444" y2="936" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="534" y1="936" x2="576" y2="936" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="90" y="1019" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">Links after</text>
+<rect x="316" y="980" width="85" height="55" rx="14" fill="#DCF5E9" stroke="#42A576" stroke-width="2" />
+<text x="358.5" y="1020.5" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="middle">1</text>
+<rect x="448" y="980" width="85" height="55" rx="14" fill="#DCF5E9" stroke="#42A576" stroke-width="2" />
+<text x="490.5" y="1020.5" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="middle">2</text>
+<line x1="402" y1="1008" x2="444" y2="1008" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="740" y="912" width="490" height="124" rx="15" fill="#142B3E" stroke="#142B3E" stroke-width="0" />
+<text x="768" y="955" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start">Relink 1 → 2; remove 4.</text>
+<text x="768" y="999" fill="#D1E4EE" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start">After: [9, 5, 1, 2, 8, 3]</text>
+<text x="90" y="1072" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Find the node: O(n). Relink after finding it: O(1).</text>
+</svg>

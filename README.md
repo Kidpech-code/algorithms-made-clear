@@ -1,11 +1,12 @@
 # Algorithms, Made Clear
 
-**Algorithms explained through everyday stories, pictures, classroom math, and runnable Go.**
+**Algorithms and data structures explained through everyday stories, pictures, classroom math, and runnable Go.**
 
-The two chapters use the same six numbers. First, put them in order with Bubble Sort, Merge Sort, or Quick Sort. Then find a number with Linear Search or Binary Search. Each guide moves from a familiar situation to a visual trace, a step-by-step method, the math behind it, and a runnable Go example.
+The three chapters use the same six numbers. First, put them in order with Bubble Sort, Merge Sort, or Quick Sort. Then find a number with Linear Search or Binary Search. Finally, see how Arrays and Linked Lists store and reach those numbers. Each guide moves from a familiar situation to a visual trace, a step-by-step method, the math behind it, and a runnable Go example.
 
 - [Chapter 1: Sorting Algorithms](#chapter-1-sorting-algorithms)
 - [Chapter 2: Search Algorithms](#chapter-2-search-algorithms)
+- [Chapter 3: Data Structures](#chapter-3-data-structures)
 
 ## Chapter 1: Sorting Algorithms
 
@@ -149,6 +150,49 @@ Missing value 6: linear -1, binary -1
 ```
 
 Read the [Go search implementations](searching/search.go) and run the checks with `go test ./...`.
+
+## Chapter 3: Data Structures
+
+The first two chapters work with a row of values. How is that row stored? Imagine six numbered lockers: you can open locker 3 directly. Now imagine a treasure hunt where each clue points to the next: you must follow the links to reach clue 3. These are the ideas behind **Arrays** and **Linked Lists**.
+
+![The same six values stored in numbered array slots and in nodes connected by next links](assets/data-structures-overview.svg)
+
+We use `[5, 1, 4, 2, 8, 3]` again. In either structure, the value `2` is at zero-based position **3**. The steps to reach it differ.
+
+| Structure | Go representation in this chapter | Reach position 3 | Add at the front | Read the visual guide |
+| --- | --- | --- | --- | --- |
+| **Array** | `[6]int`: six fixed-size, consecutive slots | Directly read `A[3] = 2`; indexed access is `Θ(1)`. | A fixed array cannot grow. In a growable slice, making room shifts up to `n` values: `Θ(n)`. | [Arrays](guides/arrays.md) |
+| **Singly linked list** | Nodes with a value and a `Next` link | Start at `head` and follow three links to visit the fourth node; indexed access is `Θ(n)` in the worst case. | Make a new node point to the old head: `Θ(1)`. | [Linked Lists](guides/linked-lists.md) |
+
+```mermaid
+flowchart LR
+  I["Need the value at position 3"] --> A["Array: calculate slot 3 → 2"]
+  I --> L["List: head → 5 → 1 → 4 → 2"]
+```
+
+The [Arrays guide](guides/arrays.md) explains why a known index takes constant time, counts the shifts for insertion, and distinguishes a Go **array** (`[6]int`) from a growable **slice** (`[]int`). The [Linked Lists guide](guides/linked-lists.md) traces every `Next` link, including adding at the head and deleting the first matching node. Both include a worked example, classroom math, and an exercise with an answer.
+
+### Run the data structures example
+
+With Go 1.22 or newer, run this from the repo root on **macOS, Linux, or Windows (PowerShell)**:
+
+```sh
+go run ./examples/data-structures
+```
+
+```text
+Array: [5 1 4 2 8 3]
+Array[3]: 2
+Original after changing copy: [5 1 4 2 8 3]
+Copy after update: [5 1 4 7 8 3]
+Slice after insert 7 at index 2: [5 1 7 4 2 8 3]
+Linked list: 5 -> 1 -> 4 -> 2 -> 8 -> 3 -> nil
+Index of 2: 3
+After prepend 9: 9 -> 5 -> 1 -> 4 -> 2 -> 8 -> 3 -> nil
+After delete 4: 9 -> 5 -> 1 -> 2 -> 8 -> 3 -> nil
+```
+
+Read the [runnable example](examples/data-structures/main.go) and the [linked-list implementation](linkedlist/list.go), or run `go test ./...`. For ordinary Go programs, prefer slices when the number of values can change. Go's standard [`container/list`](https://pkg.go.dev/container/list) is a **doubly** linked list; the small singly linked list here makes each link change visible.
 
 ## License
 
