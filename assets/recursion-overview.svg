@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="820" viewBox="0 0 1320 820" role="img" aria-labelledby="title desc">
+<title id="title">Recursion: calls go down to a base case and answers come back up</title>
+<desc id="desc">Summing 5, 1, 4, 2, 8, 3 recursively. Each call sums a shorter tail until the empty slice returns zero. Answers then unwind: zero, three, eleven, thirteen, seventeen, eighteen, and twenty-three.</desc>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1 L10 6 L1 11" fill="none" stroke="#2F7F8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="0" y="0" width="1320" height="820" fill="#F5F8FB"/>
+<rect x="0" y="0" width="1320" height="168" fill="#142B3E"/>
+<rect x="56" y="49" width="8" height="70" rx="4" fill="#40C5C1"/>
+<text x="84" y="78" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">04 / RECURSION</text>
+<text x="84" y="128" fill="#D1E4EE" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">Solve a smaller version of the same problem, then use its answer.</text>
+<rect x="54" y="186" width="1212" height="84" rx="22" stroke="#D6E3ED" stroke-width="2" fill="#FFFFFF"/>
+<text x="88" y="222" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">The idea</text>
+<text x="216" y="222" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">sum(values) = first + sum(rest)</text>
+<text x="216" y="252" fill="#0B7054" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">Base case: sum([]) = 0</text>
+<rect x="54" y="294" width="584" height="458" rx="25" stroke="#D6E3ED" stroke-width="2" fill="#FFFFFF"/>
+<text x="90" y="342" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">1 / CALL DOWN</text>
+<text x="90" y="374" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Read top to bottom</text>
+<rect x="682" y="294" width="584" height="458" rx="25" stroke="#D6E3ED" stroke-width="2" fill="#FFFFFF"/>
+<text x="718" y="342" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="start">2 / RETURN UP</text>
+<text x="718" y="374" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Read bottom to top</text>
+<rect x="91" y="393" width="500" height="43" rx="11" stroke="#B9DDE1" stroke-width="1.5" fill="#EAF6F8"/>
+<text x="108" y="422" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">sum([5, 1, 4, 2, 8, 3])</text>
+<rect x="719" y="393" width="500" height="43" rx="11" stroke="#B9DFC8" stroke-width="1.5" fill="#DCF5E9"/>
+<text x="736" y="422" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">5 + 18 = 23</text>
+<rect x="91" y="442" width="500" height="43" rx="11" stroke="#B9DDE1" stroke-width="1.5" fill="#EAF6F8"/>
+<text x="108" y="471" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">sum([1, 4, 2, 8, 3])</text>
+<rect x="719" y="442" width="500" height="43" rx="11" stroke="#B9DFC8" stroke-width="1.5" fill="#EFF8F4"/>
+<text x="736" y="471" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">1 + 17 = 18</text>
+<rect x="91" y="491" width="500" height="43" rx="11" stroke="#B9DDE1" stroke-width="1.5" fill="#EAF6F8"/>
+<text x="108" y="520" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">sum([4, 2, 8, 3])</text>
+<rect x="719" y="491" width="500" height="43" rx="11" stroke="#B9DFC8" stroke-width="1.5" fill="#EFF8F4"/>
+<text x="736" y="520" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">4 + 13 = 17</text>
+<rect x="91" y="540" width="500" height="43" rx="11" stroke="#B9DDE1" stroke-width="1.5" fill="#EAF6F8"/>
+<text x="108" y="569" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">sum([2, 8, 3])</text>
+<rect x="719" y="540" width="500" height="43" rx="11" stroke="#B9DFC8" stroke-width="1.5" fill="#EFF8F4"/>
+<text x="736" y="569" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">2 + 11 = 13</text>
+<rect x="91" y="589" width="500" height="43" rx="11" stroke="#B9DDE1" stroke-width="1.5" fill="#EAF6F8"/>
+<text x="108" y="618" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">sum([8, 3])</text>
+<rect x="719" y="589" width="500" height="43" rx="11" stroke="#B9DFC8" stroke-width="1.5" fill="#EFF8F4"/>
+<text x="736" y="618" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">8 + 3 = 11</text>
+<rect x="91" y="638" width="500" height="43" rx="11" stroke="#B9DDE1" stroke-width="1.5" fill="#EAF6F8"/>
+<text x="108" y="667" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">sum([3])</text>
+<rect x="719" y="638" width="500" height="43" rx="11" stroke="#B9DFC8" stroke-width="1.5" fill="#EFF8F4"/>
+<text x="736" y="667" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">3 + 0 = 3</text>
+<rect x="91" y="687" width="500" height="43" rx="11" stroke="#E0A03E" stroke-width="1.5" fill="#FFF0C6"/>
+<text x="108" y="716" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">sum([])</text>
+<rect x="719" y="687" width="500" height="43" rx="11" stroke="#E0A03E" stroke-width="1.5" fill="#FFF0C6"/>
+<text x="736" y="716" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">sum([]) = 0</text>
+<line x1="612" y1="410" x2="612" y2="717" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="1240" y1="718" x2="1240" y2="411" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="660" y="796" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="middle">The final answer is 23; no call can finish until its smaller call returns.</text>
+</svg>

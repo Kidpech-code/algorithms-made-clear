@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="1210" viewBox="0 0 1320 1210" role="img" aria-labelledby="title desc">
+<title id="title">Recursive call chain and return values for sum of a slice</title>
+<desc id="desc">Seven calls are active when the empty-slice base case is reached. The call chain descends from sum of 5, 1, 4, 2, 8, 3 to sum of empty slice. The empty-slice call is then the top stack frame and returns 0. Returns move back through callers as 3, 11, 13, 17, 18, and 23.</desc>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1 L10 6 L1 11" fill="none" stroke="#2F7F8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="0" y="0" width="1320" height="1210" fill="#F5F8FB"/>
+<rect x="0" y="0" width="1320" height="168" fill="#142B3E"/>
+<rect x="56" y="49" width="8" height="70" rx="4" fill="#40C5C1"/>
+<text x="84" y="78" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="start">04 / RECURSION</text>
+<text x="84" y="128" fill="#D1E4EE" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="start">A call waits for its smaller call before it can finish.</text>
+<rect x="54" y="188" width="1212" height="130" rx="25" stroke="#D6E3ED" stroke-width="2" fill="#FFFFFF"/>
+<text x="90" y="235" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="start">THE RECURSIVE RULE</text>
+<text x="90" y="274" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">If values is empty, return 0. Otherwise, return values[0] + sum(values[1:]).</text>
+<text x="90" y="302" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Example: sum([5, 1, 4, 2, 8, 3]) = 5 + sum([1, 4, 2, 8, 3]).</text>
+<rect x="54" y="342" width="584" height="744" rx="25" stroke="#D6E3ED" stroke-width="2" fill="#FFFFFF"/>
+<text x="89" y="391" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="start">1 / CALLS GO DOWN</text>
+<text x="89" y="425" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">First call → base case</text>
+<rect x="682" y="342" width="584" height="744" rx="25" stroke="#D6E3ED" stroke-width="2" fill="#FFFFFF"/>
+<text x="717" y="391" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" text-anchor="start">2 / ANSWERS COME UP</text>
+<text x="717" y="425" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" text-anchor="start">Base case → first call</text>
+<rect x="93" y="451" width="490" height="66" rx="14" stroke="#B9DDE1" stroke-width="1.5" fill="#EAF6F8"/>
+<circle cx="121" cy="484" r="18" fill="#2F7F8A"/>
+<text x="121" y="491" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">1</text>
+<text x="153" y="492" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">sum([5, 1, 4, 2, 8, 3])</text>
+<rect x="721" y="451" width="490" height="66" rx="14" stroke="#B9DFC8" stroke-width="1.5" fill="#DCF5E9"/>
+<circle cx="749" cy="484" r="18" fill="#42A576"/>
+<text x="749" y="491" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">7</text>
+<text x="782" y="492" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start">5 + 18 = 23</text>
+<rect x="93" y="533" width="490" height="66" rx="14" stroke="#B9DDE1" stroke-width="1.5" fill="#EAF6F8"/>
+<circle cx="121" cy="566" r="18" fill="#2F7F8A"/>
+<text x="121" y="573" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">2</text>
+<text x="153" y="574" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">sum([1, 4, 2, 8, 3])</text>
+<rect x="721" y="533" width="490" height="66" rx="14" stroke="#B9DFC8" stroke-width="1.5" fill="#EFF8F4"/>
+<circle cx="749" cy="566" r="18" fill="#42A576"/>
+<text x="749" y="573" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">6</text>
+<text x="782" y="574" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">1 + 17 = 18</text>
+<rect x="93" y="615" width="490" height="66" rx="14" stroke="#B9DDE1" stroke-width="1.5" fill="#EAF6F8"/>
+<circle cx="121" cy="648" r="18" fill="#2F7F8A"/>
+<text x="121" y="655" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">3</text>
+<text x="153" y="656" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">sum([4, 2, 8, 3])</text>
+<rect x="721" y="615" width="490" height="66" rx="14" stroke="#B9DFC8" stroke-width="1.5" fill="#EFF8F4"/>
+<circle cx="749" cy="648" r="18" fill="#42A576"/>
+<text x="749" y="655" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">5</text>
+<text x="782" y="656" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">4 + 13 = 17</text>
+<rect x="93" y="697" width="490" height="66" rx="14" stroke="#B9DDE1" stroke-width="1.5" fill="#EAF6F8"/>
+<circle cx="121" cy="730" r="18" fill="#2F7F8A"/>
+<text x="121" y="737" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">4</text>
+<text x="153" y="738" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">sum([2, 8, 3])</text>
+<rect x="721" y="697" width="490" height="66" rx="14" stroke="#B9DFC8" stroke-width="1.5" fill="#EFF8F4"/>
+<circle cx="749" cy="730" r="18" fill="#42A576"/>
+<text x="749" y="737" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">4</text>
+<text x="782" y="738" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">2 + 11 = 13</text>
+<rect x="93" y="779" width="490" height="66" rx="14" stroke="#B9DDE1" stroke-width="1.5" fill="#EAF6F8"/>
+<circle cx="121" cy="812" r="18" fill="#2F7F8A"/>
+<text x="121" y="819" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">5</text>
+<text x="153" y="820" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">sum([8, 3])</text>
+<rect x="721" y="779" width="490" height="66" rx="14" stroke="#B9DFC8" stroke-width="1.5" fill="#EFF8F4"/>
+<circle cx="749" cy="812" r="18" fill="#42A576"/>
+<text x="749" y="819" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">3</text>
+<text x="782" y="820" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">8 + 3 = 11</text>
+<rect x="93" y="861" width="490" height="66" rx="14" stroke="#B9DDE1" stroke-width="1.5" fill="#EAF6F8"/>
+<circle cx="121" cy="894" r="18" fill="#2F7F8A"/>
+<text x="121" y="901" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">6</text>
+<text x="153" y="902" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" text-anchor="start">sum([3])</text>
+<rect x="721" y="861" width="490" height="66" rx="14" stroke="#B9DFC8" stroke-width="1.5" fill="#EFF8F4"/>
+<circle cx="749" cy="894" r="18" fill="#42A576"/>
+<text x="749" y="901" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">2</text>
+<text x="782" y="902" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" text-anchor="start">3 + 0 = 3</text>
+<rect x="93" y="943" width="490" height="66" rx="14" stroke="#E0A03E" stroke-width="1.5" fill="#FFF0C6"/>
+<circle cx="121" cy="976" r="18" fill="#E0A03E"/>
+<text x="121" y="983" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">7</text>
+<text x="153" y="984" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">sum([])</text>
+<rect x="721" y="943" width="490" height="66" rx="14" stroke="#E0A03E" stroke-width="1.5" fill="#FFF0C6"/>
+<circle cx="749" cy="976" r="18" fill="#E0A03E"/>
+<text x="749" y="983" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">1</text>
+<text x="782" y="984" fill="#17293D" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" text-anchor="start">sum([]) = 0</text>
+<line x1="610" y1="474" x2="610" y2="994" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="1238" y1="1005" x2="1238" y2="471" stroke="#2F7F8A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="54" y="1110" width="1212" height="76" rx="18" fill="#142B3E"/>
+<text x="86" y="1142" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="start">At the base case, 7 calls are active; sum([]) is the top stack frame.</text>
+<text x="86" y="1171" fill="#D1E4EE" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" text-anchor="start">Each return removes one frame and lets its caller finish. The outer call returns 23.</text>
+</svg>

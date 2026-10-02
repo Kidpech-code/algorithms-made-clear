@@ -2,11 +2,12 @@
 
 **Algorithms and data structures explained through everyday stories, pictures, classroom math, and runnable Go.**
 
-The three chapters use the same six numbers. First, put them in order with Bubble Sort, Merge Sort, or Quick Sort. Then find a number with Linear Search or Binary Search. Finally, see how Arrays and Linked Lists store and reach those numbers. Each guide moves from a familiar situation to a visual trace, a step-by-step method, the math behind it, and a runnable Go example.
+The four chapters use the same six numbers. First, put them in order with Bubble Sort, Merge Sort, or Quick Sort. Then find a number with Linear Search or Binary Search. See how Arrays and Linked Lists store and reach those numbers. Finally, use Recursion to solve a problem by reducing it to a smaller version of itself. Each guide moves from a familiar situation to a visual trace, a step-by-step method, the math behind it, and a runnable Go example.
 
 - [Chapter 1: Sorting Algorithms](#chapter-1-sorting-algorithms)
 - [Chapter 2: Search Algorithms](#chapter-2-search-algorithms)
 - [Chapter 3: Data Structures](#chapter-3-data-structures)
+- [Chapter 4: Recursion](#chapter-4-recursion)
 
 ## Chapter 1: Sorting Algorithms
 
@@ -193,6 +194,49 @@ After delete 4: 9 -> 5 -> 1 -> 2 -> 8 -> 3 -> nil
 ```
 
 Read the [runnable example](examples/data-structures/main.go) and the [linked-list implementation](linkedlist/list.go), or run `go test ./...`. For ordinary Go programs, prefer slices when the number of values can change. Go's standard [`container/list`](https://pkg.go.dev/container/list) is a **doubly** linked list; the small singly linked list here makes each link change visible.
+
+## Chapter 4: Recursion
+
+Suppose six receipts have amounts `[5, 1, 4, 2, 8, 3]`. Take the first amount, ask for the total of the remaining receipts, then add the first amount to that answer. Keep asking the **same question about a smaller row** until no receipts remain. That is recursion.
+
+![Recursion breaks the receipt total into smaller calls, reaches the empty base case, then returns a total of 23](assets/recursion-overview.svg)
+
+The two rules are simple:
+
+```text
+Sum([]) = 0                              ← base case: stop
+Sum([first, ...rest]) = first + Sum(rest) ← recursive case: make progress
+```
+
+For our six numbers, the calls move toward `Sum([])`. The answers then come back in the opposite direction: **0 → 3 → 11 → 13 → 17 → 18 → 23**. The final total is **23**.
+
+```mermaid
+flowchart TD
+  A["Sum([5, 1, 4, 2, 8, 3])"] --> B["5 + Sum([1, 4, 2, 8, 3])"]
+  B --> C["Keep passing the shorter row"]
+  C --> D["Sum([]) = 0: stop calling"]
+  D --> E["Return answers: 3, 11, 13, 17, 18, 23"]
+```
+
+The [Recursion guide](guides/recursion.md) draws the call stack, traces every call and return, proves the sum rule using induction, and derives the cost. With `n` values, the teaching function makes `n + 1` calls, takes `Θ(n)` time, and keeps `Θ(n)` active call frames at its deepest point. A missing base case or a call that does not shrink the input cannot finish correctly.
+
+Use recursion when the shape of the problem naturally repeats, such as nested data or the divide-and-combine idea in [Merge Sort](guides/merge-sort.md). For a simple total over a very large row, a loop avoids the extra call stack.
+
+### Run the recursion example
+
+With Go 1.22 or newer, run this from the repo root on **macOS, Linux, or Windows (PowerShell)**:
+
+```sh
+go run ./examples/recursion
+```
+
+```text
+Values: [5 1 4 2 8 3]
+Recursive sum: 23
+Empty slice: 0
+```
+
+Read the [Go implementation](recursion/sum.go) and [runnable example](examples/recursion/main.go), or run `go test ./...`. `values[1:]` creates a smaller slice view; it does not copy all the remaining elements.
 
 ## License
 
